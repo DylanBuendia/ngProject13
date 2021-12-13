@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-body">
+    <h1>Template Driven Form</h1>
+
+    <form class="mt-4" (ngSubmit)="submit(nome.value)"  #wForm="ngForm">
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="city" required #nome="ngModel" [ngClass]="{ 'invalid-input': nome.touched && nome.invalid}">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary w-100" type="submit" [disabled]="wForm.invalid">Search</button>
+      </div>
+    </form>
+  </div>
+</div>
+<ng-container *ngIf="detailsWeather$ |async as detail">
+  <h2 class="text-center">{{detail.name}}</h2>
+  <div class="d-flex justify-content-center gap-5">
+    <h5 class="text-center mr-5"> Temperature: {{detail.temp}} </h5>
+    <p class="text-center ml-5"> Weather description: {{detail.description}} </p>
+  </div>
+</ng-container>
