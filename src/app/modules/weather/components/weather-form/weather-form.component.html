@@ -1,10 +1,10 @@
-<div class="card">
+<div class="container card mx-auto my-5">
   <div class="card-body">
-    <h1>Template Driven Form</h1>
+    <h1 class="text-center">Weather in your city</h1>
 
-    <form class="mt-4" (ngSubmit)="submit(nome.value)"  #wForm="ngForm">
+    <form class="mt-4" (ngSubmit)="submit(nome.value)" #wForm="ngForm">
       <div class="form-group">
-        <label for="nome">Nome</label>
+        <label for="nome">City</label>
         <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="city" required #nome="ngModel" [ngClass]="{ 'invalid-input': nome.touched && nome.invalid}">
       </div>
       <div class="form-group">
@@ -14,9 +14,12 @@
   </div>
 </div>
 <ng-container *ngIf="detailsWeather$ |async as detail">
-  <h2 class="text-center">{{detail.name}}</h2>
+  <div class="d-flex justify-content-center gap-5">
+    <h2 class="text-center text-primary">{{detail.name}}</h2>
+    <img [src]="detail.icon">
+  </div>
   <div class="d-flex justify-content-center gap-5">
     <h5 class="text-center mr-5"> Temperature: {{detail.temp}} </h5>
-    <p class="text-center ml-5"> Weather description: {{detail.description}} </p>
+    <p class="text-center ml-5"> <b>Weather description:</b> {{detail.description}} </p>
   </div>
 </ng-container>

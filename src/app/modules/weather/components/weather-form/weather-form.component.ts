@@ -19,6 +19,8 @@ export class WeatherFormComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.weatherService.getWeatherByName(this.city).subscribe(data => console.log(data))
+
   }
 
   submit(param :string){
